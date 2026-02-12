@@ -28,8 +28,6 @@ def main():
 # Homework code. End.
 #=========================================================================================
 
-    print(str(col_sum_lst).strip('[]').replace(',',''))
-                
     print("Script execution finished.")
     return 0
 
