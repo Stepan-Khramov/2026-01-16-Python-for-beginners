@@ -12,7 +12,6 @@ Example:
 """
 
 import sys
-import string
 # Import other standard library or third-party packages here
 
 def main():
@@ -23,18 +22,29 @@ def main():
 # Homework code. Begin.
 #=========================================================================================
     
-    count = 0
-    txt_tmp = str(input())
-    translator = str.maketrans('', '', string.punctuation)
-    txt = txt_tmp.translate(translator).lower().replace(' ', '')
-    for i in range(len(txt)-1, -1, -1):
-        if txt[i] in 'ауоыиэяюёе':
-            count += 1
-    if count > 0:
-        print(count)
+    qnt_row, qnt_col, el_row, el_col = list(map(int, input().split()))
+
+    lst = []
+    line = []
+    if  (((el_row >= 0) & (el_row < qnt_row)) & ((el_col >= 0) & (el_col < qnt_col))) or\
+        (((el_row >= 0) & (el_row < qnt_row)) & ((el_col < 0) & (abs(el_col) <= qnt_col))) or\
+        (((el_row < 0) & (abs(el_row) <= qnt_row)) & ((el_col >= 0) & (el_col < qnt_col))) or\
+        (((el_row < 0) & (abs(el_row) <= qnt_row)) & ((el_col < 0) & (abs(el_col) <= qnt_col))):
+        for i in range(0,qnt_row):
+            while len(line) != qnt_col:
+                line = list(map(int, input().split()))
+                if len(line) == qnt_col:
+                    lst.append(line)
+                else:
+                    print('One more time.')
+            line = []
+        print(lst[el_row][el_col])
     else:
-        print('-1')
-        
+        print('Позиция выходит за пределы списка')
+
+
+
+
 #=========================================================================================
 # Homework code. End.
 #=========================================================================================
