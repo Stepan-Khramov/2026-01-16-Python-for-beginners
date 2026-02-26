@@ -27,17 +27,11 @@ def main():
 
     # print(df.head)
 
-    # Какую долю составляют (не в процентах) соревнования по мужской спортивной гимнастике среди всех участников игр 1904 года?
-    # Округлите ответ до двух знаков после точки
-    # Подсказка: вам необходимы соревнования «Gymnastics Men's Individual All-Around, Apparatus Work»
-    # res = df[(df.Year == 1904) & (df.Event == "Gymnastics Men's Individual All-Around, Apparatus Work")]["ID"].value_counts()
-    event_1 = df[(df.Year == 1904)]["Event"].value_counts()["Gymnastics Men's Individual All-Around, Apparatus Work"]
+    # Найдите среднее арифметическое для роста девушек баскетболисток 
+    # (название соревнования должно начинаться со слова «Basketball»),
+    # которые участвовали в играх 1988 года. Округлите ответ до двух знаков после точки.
+    event_1 = round(df[(df.Year == 1988) & (df.Sex == 'F') & df.Event.str.startswith('Basketball')]['Height'].mean(), 2)
     print(event_1)
-    all_events = df['Year'].value_counts()[1904]
-    print(all_events)
-    res = event_1 / all_events
-    print(round(res, 2))
-    # 0.09
 
 
 #=========================================================================================
