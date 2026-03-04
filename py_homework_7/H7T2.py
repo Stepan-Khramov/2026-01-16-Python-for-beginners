@@ -26,17 +26,13 @@ def main():
 
     df = pd.read_csv('athlete_events.csv')
     
-    var_1 = len(df[df.Name == 'Aleksey Yuryevich Nemov']['Games'].unique())
-    var_2 = len(df[df.Name == 'Aleksey Petrovich Bondarenko']['Games'].unique())
-    var_3 = len(df[df.Name == 'Darya Vitalyevna Pishchalnikova']['Games'].unique())
+    var_1 = len(df[(df.Team == 'Russia') & (df.Year == 2008) & (df.Sport == 'Wrestling') & (df.Medal == 'Gold')])
 
-    print(f'Aleksey Yuryevich Nemov - {var_1}')
-    print(f'Aleksey Petrovich Bondarenko - {var_2}')
-    print(f'Darya Vitalyevna Pishchalnikova - {var_3}')
+    print(f'RUS Gold Wrestling 2008 - {var_1}')
+
 #=========================================================================================
 # Homework code. End.
 #=========================================================================================
-
     print("Script execution finished.")
     return 0
 
