@@ -26,8 +26,13 @@ def main():
 
     df = pd.read_csv('athlete_events.csv')
     
-    print(round(df[(df.Games == '2006 Winter') & (df['Team'].str.contains('Russia'))][['Name', 'Weight']].drop_duplicates(subset=['Name'], keep = 'first')['Weight'].mean()))
+    sports_1992 = df[(df.Year == 1992)]['Sport'].unique().tolist()
+    sports_2016 = df[(df.Year == 2016)]['Sport'].unique().tolist()
 
+    result = sorted(list(set(sports_1992) - set(sports_2016)))
+    
+    for line in result:
+        print(line)
 
 #=========================================================================================
 # Homework code. End.
