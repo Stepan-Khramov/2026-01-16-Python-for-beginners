@@ -26,8 +26,15 @@ def main():
 
     df = pd.read_csv('athlete_events.csv')
 
-    fra_2008 = len(df[(df.Year == 2008) & (df.NOC == 'FRA')]['Name'].unique())
-    print(fra_2008)
+    max_height = max(df[(df.Season == 'Winter') & (df.Sex == 'M')].Height)
+    max_year = max(df[(df.Season == 'Winter') & (df.Sex == 'M') & (df.Height == (max_height))].Year)
+    tall_man = df[(df.Season == 'Winter') & (df.Sex == 'M') & (df.Height == (max_height))].head(1)
+    print(f'Рост: {str(tall_man['Height'].tolist()).strip('[]')}, Год: {str(tall_man['Year'].tolist()).strip('[]')}, Имя: {str(tall_man['Name'].tolist()).strip("[]'")}')
+    
+    low_height = min(df[(df.Season == 'Winter') & (df.Sex == 'M')].Height)
+    max_year = max(df[(df.Season == 'Winter') & (df.Sex == 'M') & (df.Height == (low_height))].Year)
+    short_man = df[(df.Season == 'Winter') & (df.Sex == 'M') & (df.Height == (low_height)) & (df.Year == (max_year))].head(1)
+    print(f'Рост: {str(short_man['Height'].tolist()).strip('[]')}, Год: {str(short_man['Year'].tolist()).strip('[]')}, Имя: {str(short_man['Name'].tolist()).strip("[]'")}')
 #=========================================================================================
 # Homework code. End.
 #=========================================================================================
