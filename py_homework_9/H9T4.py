@@ -12,6 +12,7 @@ Example:
 """
 
 import sys
+import math
 
 # Import other standard library or third-party packages here
 
@@ -22,18 +23,12 @@ def main():
 #=========================================================================================
 # Homework code. Begin.
 #=========================================================================================
-    num = float(input())
-    div_res = True
+    rad = float(input())
 
-    if num > 1:
-        for i in range(2,num):
-            if num % i == 0:
-                div_res = False
-                break
-    else:
-        div_res = False
+    sqr = math.pi * (rad ** 2)
+    cir_fer = math.pi * rad * 2
 
-    print (str(div_res))
+    print (f'{sqr:.2f} {cir_fer:.2f}')
 
 
 #=========================================================================================
