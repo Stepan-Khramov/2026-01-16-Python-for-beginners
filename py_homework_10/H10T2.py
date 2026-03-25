@@ -12,8 +12,9 @@ Example:
 """
 
 import sys
-import random
-import string
+import datetime
+#1 import locale
+# Python 3.14 # from dateutil.relativedelta import relativedelta
 
 # Import other standard library or third-party packages here
 
@@ -24,21 +25,46 @@ def main():
 #=========================================================================================
 # Homework code. Begin.
 #=========================================================================================
-    pwd = []
-    len = int(input())
-    seed = int(input())
+    #1 locale.setlocale(locale.LC_ALL, 'ru_RU.UTF-8') 
 
-    random.seed(seed)
+    days_map = {
+    "Monday": "понедельник",
+    "Tuesday": "вторник",
+    "Wednesday": "среда",
+    "Thursday": "четверг",
+    "Friday": "пятница",
+    "Saturday": "суббота",
+    "Sunday": "воскресенье"
+     }
 
-    chars = string.ascii_letters + string.digits
+    bd = input()
+    bd = datetime.datetime.strptime(bd, '%d.%m.%Y').date()
+    some_date = input()
+    some_date = datetime.datetime.strptime(some_date, '%d.%m.%Y').date()
 
-    pwd = ''.join(random.choice(chars) for i in range(len))
-
-    # for i in range(len):
-    #     pwd.append(random.choice(chars))
-    # pwd = ''.join(pwd)
-
-    print(pwd)
+    bd_week_day = days_map.get(bd.strftime('%A'))
+    #2 match bd.strftime('%A'):
+    #2     case 'Monday':
+    #2         bd_week_day = 'понедельник'
+    #2     case 'Tuesday':
+    #2         bd_week_day = 'вторник'
+    #2     case 'Wednesday':
+    #2         bd_week_day = 'среда'
+    #2     case 'Thursday':
+    #2         bd_week_day = 'четверг'
+    #2     case 'Friday':
+    #2         bd_week_day = 'пятница'
+    #2     case 'Saturday':
+    #2         bd_week_day = 'суббота'
+    #2     case 'Sunday':
+    #2         bd_week_day = 'воскресенье'
+    
+    # Python 3.14 # age_years = relativedelta(some_date, bd).years
+    age_years = some_date.year - bd.year
+    if (some_date.month, some_date.day) < (bd.month, bd.day):
+        age_years -= 1
+    
+    print(f'{age_years}\n{bd_week_day} ')
 
 
 #=========================================================================================
@@ -46,7 +72,7 @@ def main():
 #=========================================================================================
 
     print("Script execution finished.")
-    return 0
+    bd_week_day = 0
 
 if __name__ == "__main__":
     # This block allows the script to be run directly from the command line
