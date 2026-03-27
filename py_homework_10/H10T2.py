@@ -72,7 +72,7 @@ def main():
 #=========================================================================================
 
     print("Script execution finished.")
-    bd_week_day = 0
+    return 0
 
 if __name__ == "__main__":
     # This block allows the script to be run directly from the command line
