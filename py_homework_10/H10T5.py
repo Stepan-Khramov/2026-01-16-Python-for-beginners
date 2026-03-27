@@ -12,33 +12,29 @@ Example:
 """
 
 import sys
-import random
-import string
 
 # Import other standard library or third-party packages here
 
 def main():
     """Main function of the script."""
     print("Script execution started.")
-    
+
 #=========================================================================================
 # Homework code. Begin.
 #=========================================================================================
-    pwd = []
-    lenth = int(input())
-    seed = int(input())
 
-    random.seed(seed)
-
-    chars = string.ascii_letters + string.digits
-
-    pwd = ''.join(random.choice(chars) for i in range(lenth))
-
-    # for i in range(len):
-    #     pwd.append(random.choice(chars))
-    # pwd = ''.join(pwd)
-
-    print(pwd)
+    strng1 = str(input())
+    strng2 = str(input())
+    dif_str = 'NO'
+    for i in range(0,len(strng2)):
+        n = len(strng2)
+        k = i % n
+        if strng2[k:] + strng2[:k] == strng1:
+            dif_str = 'YES'
+            print(i)
+            break
+    if 'NO' in dif_str:
+        print(dif_str)
 
 #=========================================================================================
 # Homework code. End.
