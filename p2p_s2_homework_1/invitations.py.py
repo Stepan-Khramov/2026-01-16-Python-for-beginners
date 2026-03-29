@@ -69,65 +69,26 @@ def read_csv(def_file_path):
         lines[i] = lines[i].strip('\n').split(',')
     return lines
 
-def generate_invitations(file_path, talks_list, conference_date):
-# Вариант решения через список.
-
-    invitation_count = 0
-
-    if os.path.exists(file_path):
-        def_participants = read_csv(file_path)
-    else:
-        # print(f'The input file not found.')
-        return 'Error: The input file not found.'
-
-    for participant in def_participants[1:]:
-        selected_talk = random.choice(talks_list)
-        first_name = participant[1].split()[0]
-
-        if participant[3] == 'Москва':
-            # Текст приглашения для москвичей.
-            def_invitation = (
-                f'Здравствуйте, {first_name}!\n'
-                f'Рады видеть участника из города {participant[3]} на нашей конференции {conference_date}.\n'
-                f'Рекомендуем вам посетить доклад: «{selected_talk}».'
-                f'\nПриглашаем вас посетить офлайн-часть в московском офисе!'
-            )
-
-        else:
-            # Базовый текст приглашения
-            def_invitation = (
-                f'Здравствуйте, {first_name}!\n'
-                f'Рады видеть участника из города {participant[3]} на нашей конференции {conference_date}.\n'
-                f'Рекомендуем вам посетить доклад: «{selected_talk}».'
-            )
-
-        with open(f'{invitation_file_path}приглашение_{participant[1].split()[0]}_{participant[1].split()[1]}.txt', 'w', encoding='UTF-8') as text_file:
-            text_file.write(def_invitation)
-        print(def_invitation)
-        print('-' * 30)
-        invitation_count += 1
-
-    return invitation_count
-
 # def generate_invitations(file_path, talks_list, conference_date):
-#     # Вариант решения через Pandas.
+# # Вариант решения через список.
 
 #     invitation_count = 0
 
 #     if os.path.exists(file_path):
-#         df = pd.read_csv(file_path)
-#         df = df.set_index('id')
+#         def_participants = read_csv(file_path)
 #     else:
 #         # print(f'The input file not found.')
 #         return 'Error: The input file not found.'
 
-#     for id, row in df.iterrows():
+#     for participant in def_participants[1:]:
 #         selected_talk = random.choice(talks_list)
-#         if row.город == 'Москва':
+#         first_name = participant[1].split()[0]
+
+#         if participant[3] == 'Москва':
 #             # Текст приглашения для москвичей.
 #             def_invitation = (
-#                 f'Здравствуйте, {row.имя}!\n'
-#                 f'Рады видеть участника из города {row.город} на нашей конференции {conference_date}.\n'
+#                 f'Здравствуйте, {first_name}!\n'
+#                 f'Рады видеть участника из города {participant[3]} на нашей конференции {conference_date}.\n'
 #                 f'Рекомендуем вам посетить доклад: «{selected_talk}».'
 #                 f'\nПриглашаем вас посетить офлайн-часть в московском офисе!'
 #             )
@@ -135,18 +96,57 @@ def generate_invitations(file_path, talks_list, conference_date):
 #         else:
 #             # Базовый текст приглашения
 #             def_invitation = (
-#                 f'Здравствуйте, {row.имя}!\n'
-#                 f'Рады видеть участника из города {row.город} на нашей конференции {conference_date}.\n'
+#                 f'Здравствуйте, {first_name}!\n'
+#                 f'Рады видеть участника из города {participant[3]} на нашей конференции {conference_date}.\n'
 #                 f'Рекомендуем вам посетить доклад: «{selected_talk}».'
 #             )
 
-#         with open(f'{invitation_file_path}приглашение_{row.имя.split()[0]}_{row.имя.split()[1]}.txt', 'w', encoding='UTF-8') as text_file:
+#         with open(f'{invitation_file_path}приглашение_{participant[1].split()[0]}_{participant[1].split()[1]}.txt', 'w', encoding='UTF-8') as text_file:
 #             text_file.write(def_invitation)
 #         print(def_invitation)
 #         print('-' * 30)
 #         invitation_count += 1
 
 #     return invitation_count
+
+def generate_invitations(file_path, talks_list, conference_date):
+    # Вариант решения через Pandas.
+
+    invitation_count = 0
+
+    if os.path.exists(file_path):
+        df = pd.read_csv(file_path)
+        df = df.set_index('id')
+    else:
+        # print(f'The input file not found.')
+        return 'Error: The input file not found.'
+
+    for id, row in df.iterrows():
+        selected_talk = random.choice(talks_list)
+        if row.город == 'Москва':
+            # Текст приглашения для москвичей.
+            def_invitation = (
+                f'Здравствуйте, {row.имя}!\n'
+                f'Рады видеть участника из города {row.город} на нашей конференции {conference_date}.\n'
+                f'Рекомендуем вам посетить доклад: «{selected_talk}».'
+                f'\nПриглашаем вас посетить офлайн-часть в московском офисе!'
+            )
+
+        else:
+            # Базовый текст приглашения
+            def_invitation = (
+                f'Здравствуйте, {row.имя}!\n'
+                f'Рады видеть участника из города {row.город} на нашей конференции {conference_date}.\n'
+                f'Рекомендуем вам посетить доклад: «{selected_talk}».'
+            )
+
+        with open(f'{invitation_file_path}приглашение_{row.имя.split()[0]}_{row.имя.split()[1]}.txt', 'w', encoding='UTF-8') as text_file:
+            text_file.write(def_invitation)
+        print(def_invitation)
+        print('-' * 30)
+        invitation_count += 1
+
+    return invitation_count
 
 def main():
     '''Main function of the script.'''
