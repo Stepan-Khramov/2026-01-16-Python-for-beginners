@@ -1,4 +1,4 @@
-id,имя фамилия,email,город
+id,имя,email,город
 1,Иван Иванов,ivan.ivanov1@example.com,Москва
 2,Мария Смирнова,maria.smirnova2@example.com,Санкт-Петербург
 3,Алексей Кузнецов,alexey.kuznetsov3@example.com,Новосибирск
