@@ -1,68 +1,14 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-
-'''
-Brief description of the script and its purpose.
-
-This module does X and Y.
-
-Example:
-    $ python your_script_name.py
-'''
-
 import sys
-# Import other standard library or third-party packages here
 import random
+import os
 
-def read_csv(def_file_path):
-    with open(f'{def_file_path}', 'r', encoding='UTF-8') as file:  
-        lines = file.readlines()
-    for i in range(0,len(lines)):
-        lines[i] = lines[i].strip('\n').split(',')
-    return lines
-
-def generate_invitations(file_path, talks_list, conference_date='25 марта 2026 года'):
-
-    def_invitations_list = []
-    def_participants = read_csv(file_path)
-
-    for participant in def_participants[1:]:
-        selected_talk = random.choice(talks_list)
-        first_name = participant[1].split()[0]
-
-        # Условие для Москвы
-        if participant[3] == 'Москва':
-            def_invitations_list.append(
-                f'Здравствуйте, {first_name}!\n'
-                f'Рады видеть участника из города {participant[3]} на нашей конференции {conference_date}.\n'
-                f'Рекомендуем вам посетить доклад: «{selected_talk}».'
-                f'\nПриглашаем вас посетить офлайн-часть в московском офисе!'
-            )
-
-        else:
-            # Базовый текст приглашения
-            def_invitations_list.append(
-                f'Здравствуйте, {first_name}!\n'
-                f'Рады видеть участника из города {participant[3]} на нашей конференции {conference_date}.\n'
-                f'Рекомендуем вам посетить доклад: «{selected_talk}».'
-            )
-
-    for def_invitation in def_invitations_list:
-        print(def_invitation)
-        print('-' * 30)
-
-    return len(def_invitations_list)
-
-def main():
-    '''Main function of the script.'''
-    print('Script execution started.')
-    
-#=========================================================================================
-# Homework code. Begin.
-#=========================================================================================
-
-    talks = [
+conf_date = '25 марта 2026 года'
+participants_list_file_path = '.\p2p_s2_homework_1\участники.csv'
+invitation_file_path = '.\p2p_s2_homework_1\\'
+talks = [
         'Python 3.12: что нового в типизации',
         'Asyncio: под капотом событийного цикла',
         'Декораторы: от простых оберток до метапрограммирования',
@@ -115,12 +61,64 @@ def main():
         'Рефакторинг Legacy-кода на Python'
     ]
 
-    generate_invitations('.\p2p_s2_homework_1\участники.csv', talks, '25 марта 2026 года')
+def read_csv(def_file_path):
+    with open(f'{def_file_path}', 'r', encoding='UTF-8') as file:  
+        lines = file.readlines()
+    for i in range(0,len(lines)):
+        lines[i] = lines[i].strip('\n').split(',')
+    return lines
 
-#=========================================================================================
-# Homework code. End.
-#=========================================================================================
+def generate_invitations(file_path, talks_list, conference_date='25 марта 2026 года'):
 
+    def_invitations_list = []
+    if os.path.exists(file_path):
+        def_participants = read_csv(file_path)
+    else:
+        # print(f'The input file not found.')
+        return 'Error: The input file not found.'
+
+    for participant in def_participants[1:]:
+        selected_talk = random.choice(talks_list)
+        first_name = participant[1].split()[0]
+
+        # Условие для Москвы
+        if participant[3] == 'Москва':
+            # Текст приглашения для москвичей.
+            def_invitation = (
+                f'Здравствуйте, {first_name}!\n'
+                f'Рады видеть участника из города {participant[3]} на нашей конференции {conference_date}.\n'
+                f'Рекомендуем вам посетить доклад: «{selected_talk}».'
+                f'\nПриглашаем вас посетить офлайн-часть в московском офисе!'
+            )
+
+        else:
+            # Базовый текст приглашения
+            def_invitation = (
+                f'Здравствуйте, {first_name}!\n'
+                f'Рады видеть участника из города {participant[3]} на нашей конференции {conference_date}.\n'
+                f'Рекомендуем вам посетить доклад: «{selected_talk}».'
+            )
+
+        with open(f'{invitation_file_path}приглашение_{participant[1].split()[0]}_{participant[1].split()[1]}.txt', 'w', encoding='UTF-8') as text_file:
+            text_file.write(def_invitation)
+        print(def_invitation)
+        print('-' * 30)
+
+    return len(def_invitations_list)
+
+def main():
+    '''Main function of the script.'''
+    print('Script execution started.')
+
+# ====================================================================================================
+
+    result = generate_invitations(participants_list_file_path, talks, conf_date)
+    if 'Error:' in str(result):
+        print(result)
+    else:
+        print(f'Количество подготовленных приглашений - {result}шт.')
+
+# ====================================================================================================
     print('Script execution finished.')
     return 0
 
