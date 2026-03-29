@@ -1,0 +1,51 @@
+id,имя фамилия,email,город
+1,Иван Иванов,ivan.ivanov1@example.com,Москва
+2,Мария Смирнова,maria.smirnova2@example.com,Санкт-Петербург
+3,Алексей Кузнецов,alexey.kuznetsov3@example.com,Новосибирск
+4,Елена Попова,elena.popova4@example.com,Екатеринбург
+5,Дмитрий Васильев,dmitry.vasilyev5@example.com,Казань
+6,Ольга Петрова,olga.petrova6@example.com,Нижний Новгород
+7,Сергей Соколов,sergey.sokolov7@example.com,Челябинск
+8,Анна Михайлова,anna.mikhailova8@example.com,Самара
+9,Петр Новиков,petr.novikov9@example.com,Омск
+10,Татьяна Федорова,tatiana.fedorova10@example.com,Ростов-на-Дону
+11,Иван Смирнов,ivan.smirnov11@example.com,Москва
+12,Мария Кузнецова,maria.kuznetsova12@example.com,Санкт-Петербург
+13,Алексей Попов,alexey.popov13@example.com,Новосибирск
+14,Елена Васильева,elena.vasilyeva14@example.com,Екатеринбург
+15,Дмитрий Петров,dmitry.petrov15@example.com,Казань
+16,Ольга Соколова,olga.sokolova16@example.com,Нижний Новгород
+17,Сергей Михайлов,sergey.mikhailov17@example.com,Челябинск
+18,Анна Новикова,anna.novikova18@example.com,Самара
+19,Петр Федоров,petr.fedorov19@example.com,Омск
+20,Татьяна Иванова,tatiana.ivanova20@example.com,Ростов-на-Дону
+21,Иван Кузнецов,ivan.kuznetsov21@example.com,Москва
+22,Мария Попова,maria.popova22@example.com,Санкт-Петербург
+23,Алексей Васильев,alexey.vasilyev23@example.com,Новосибирск
+24,Елена Петрова,elena.petrova24@example.com,Екатеринбург
+25,Дмитрий Соколов,dmitry.sokolov25@example.com,Казань
+26,Ольга Михайлова,olga.mikhailova26@example.com,Нижний Новгород
+27,Сергей Новиков,sergey.novikov27@example.com,Челябинск
+28,Анна Федорова,anna.fedorova28@example.com,Самара
+29,Петр Иванов,petr.ivanov29@example.com,Омск
+30,Татьяна Смирнова,tatiana.smirnova30@example.com,Ростов-на-Дону
+31,Иван Попов,ivan.popov31@example.com,Москва
+32,Мария Васильева,maria.vasilyeva32@example.com,Санкт-Петербург
+33,Алексей Петров,alexey.petrov33@example.com,Новосибирск
+34,Елена Соколова,elena.sokolova34@example.com,Екатеринбург
+35,Дмитрий Михайлов,dmitry.mikhailov35@example.com,Казань
+36,Ольга Новикова,olga.novikova36@example.com,Нижний Новгород
+37,Сергей Федоров,sergey.fedorov37@example.com,Челябинск
+38,Анна Иванова,anna.ivanova38@example.com,Самара
+39,Петр Смирнов,petr.smirnov39@example.com,Омск
+40,Татьяна Кузнецова,tatiana.kuznetsova40@example.com,Ростов-на-Дону
+41,Иван Васильев,ivan.vasilyev41@example.com,Москва
+42,Мария Петрова,maria.petrova42@example.com,Санкт-Петербург
+43,Алексей Соколов,alexey.sokolov43@example.com,Новосибирск
+44,Елена Михайлова,elena.mikhailova44@example.com,Екатеринбург
+45,Дмитрий Новиков,dmitry.novikov45@example.com,Казань
+46,Ольга Федорова,olga.fedorova46@example.com,Нижний Новгород
+47,Сергей Иванов,sergey.ivanov47@example.com,Челябинск
+48,Анна Смирнова,anna.smirnova48@example.com,Самара
+49,Петр Кузнецов,petr.kuznetsov49@example.com,Омск
+50,Татьяна Попова,tatiana.popova50@example.com,Ростов-на-Дону

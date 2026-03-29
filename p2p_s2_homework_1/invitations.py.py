@@ -1,0 +1,132 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+
+'''
+Brief description of the script and its purpose.
+
+This module does X and Y.
+
+Example:
+    $ python your_script_name.py
+'''
+
+import sys
+# Import other standard library or third-party packages here
+import random
+
+def read_csv(def_file_path):
+    with open(f'{def_file_path}', 'r', encoding='UTF-8') as file:  
+        lines = file.readlines()
+    for i in range(0,len(lines)):
+        lines[i] = lines[i].strip('\n').split(',')
+    return lines
+
+def generate_invitations(file_path, talks_list, conference_date='25 марта 2026 года'):
+
+    def_invitations_list = []
+    def_participants = read_csv(file_path)
+
+    for participant in def_participants[1:]:
+        selected_talk = random.choice(talks_list)
+        first_name = participant[1].split()[0]
+
+        # Условие для Москвы
+        if participant[3] == 'Москва':
+            def_invitations_list.append(
+                f'Здравствуйте, {first_name}!\n'
+                f'Рады видеть участника из города {participant[3]} на нашей конференции {conference_date}.\n'
+                f'Рекомендуем вам посетить доклад: «{selected_talk}».'
+                f'\nПриглашаем вас посетить офлайн-часть в московском офисе!'
+            )
+
+        else:
+            # Базовый текст приглашения
+            def_invitations_list.append(
+                f'Здравствуйте, {first_name}!\n'
+                f'Рады видеть участника из города {participant[3]} на нашей конференции {conference_date}.\n'
+                f'Рекомендуем вам посетить доклад: «{selected_talk}».'
+            )
+
+    for def_invitation in def_invitations_list:
+        print(def_invitation)
+        print('-' * 30)
+
+    return len(def_invitations_list)
+
+def main():
+    '''Main function of the script.'''
+    print('Script execution started.')
+    
+#=========================================================================================
+# Homework code. Begin.
+#=========================================================================================
+
+    talks = [
+        'Python 3.12: что нового в типизации',
+        'Asyncio: под капотом событийного цикла',
+        'Декораторы: от простых оберток до метапрограммирования',
+        'Управление зависимостями с Poetry и PDM',
+        'FastAPI: создание высокопроизводительных API',
+        'Pandas для анализа больших данных',
+        'Django Channels: работа с вебсокетами',
+        'Магия магических методов: __init__, __call__, __getattr__',
+        'Профилирование Python-кода с помощью cProfile',
+        'Pytest: продвинутые фикстуры и плагины',
+        'Мультипроцессорность против многопоточности',
+        'SQLAlchemy 2.0: современный подход к ORM',
+        'Разработка CLI-инструментов на Click и Typer',
+        'Pydantic V2: валидация данных на стероидах',
+        'Сборщик мусора в Python: как работает GC',
+        'Микросервисы на Nameko и gRPC',
+        'Celery: надежные фоновые задачи',
+        'Интеграция C++ кода через Pybind11',
+        'Оптимизация памяти с использованием __slots__',
+        'Генераторы и итераторы: экономим ресурсы',
+        'PyScript: Python в браузере',
+        'Автоматизация тестирования с Selenium и Playwright',
+        'Работа с изображениями через Pillow и OpenCV',
+        'Разработка Telegram-ботов на Aiogram 3.x',
+        'Безопасность кода: Bandit и Safety',
+        'Структурное сопоставление шаблонов (match/case)',
+        'Контекстные менеджеры: оператор with во всей красе',
+        'Реализация паттернов проектирования на Python',
+        'Streamlit: быстрые дашборды для Data Science',
+        'Использование Type Hints для чистого кода',
+        'Логирование с Loguru вместо стандартного logging',
+        'Эффективный парсинг с Beautiful Soup и Scrapy',
+        'Масштабирование Django: кэширование и БД',
+        'Сравнение производительности: CPython, PyPy, Cython',
+        'Обработка JSON и XML: стандартная библиотека и аналоги',
+        'Написание расширений на Rust с помощью PyO3',
+        'Объекты-дескрипторы: глубокое погружение',
+        'Тестирование API с помощью Schemathesis',
+        'Docker-контейнеризация Python-приложений',
+        'CI/CD для Python: GitHub Actions и GitLab CI',
+        'Основы машинного обучения с Scikit-Learn',
+        'Deep Learning с PyTorch: первые шаги',
+        'Интернационализация приложений (i18n) в Python',
+        'Метаклассы: когда они действительно нужны',
+        'Работа с сетевыми протоколами через socket',
+        'Mock-объекты: как правильно имитировать окружение',
+        'Чистая архитектура в Python-проектах',
+        'Управление конфигурациями: Pydantic-settings и Dynaconf',
+        'Проверка стилистики: Flake8, Black и Isort',
+        'Рефакторинг Legacy-кода на Python'
+    ]
+
+    generate_invitations('.\p2p_s2_homework_1\участники.csv', talks, '25 марта 2026 года')
+
+#=========================================================================================
+# Homework code. End.
+#=========================================================================================
+
+    print('Script execution finished.')
+    return 0
+
+if __name__ == '__main__':
+    # This block allows the script to be run directly from the command line
+    # or imported as a module without executing the main function automatically.
+    # sys.exit() is used to ensure the script exits with the status code
+    # returned by the main function.
+    sys.exit(main())
