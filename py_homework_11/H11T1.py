@@ -40,7 +40,7 @@ def main():
             row_inc, col_inc = -col_inc, row_inc
             row, col = row + row_inc,  col + col_inc
     if direction == 'clockwise':
-        mtx = list(zip(*mtx))
+        mtx = zip(*mtx)
     for line in mtx:
         print('\t'.join(map(str, line)))
 
